@@ -49,7 +49,6 @@ def select_player():
             game_date = input("> ")
             print("Please enter the number of runs for this player: ")
             runs = input("> ")
-            player_id = 
             url = f"http://localhost:5000/search_players?player_id={team_id}&runs={runs}&ret=cli"
             req = requests.get(url)
             print(req.text)
