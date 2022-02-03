@@ -30,7 +30,7 @@ class Team():
         cursor = db_conn.cursor()
         sql = "INSERT IGNORE INTO teams (name) VALUES (%s)"
         for team in teams:
-            cursor.execute(sql, team.name)
+            cursor.execute(sql, (team.name))
         db_conn.commit()
         print(mycursor.rowcount, "records inserted.")
 
@@ -38,7 +38,7 @@ class Team():
         cursor = db_conn.cursor()
         sql = "SELECT DISTINCT id, name FROM teams"
         teams = {}
-        cursor.execute()
+        cursor.execute(sql)
         for row in cursor:
             name = row[1]
             if name not in teams:
