@@ -76,9 +76,14 @@ def load_csv():
                 team = Team(team_name)
                 teams.append(team)
                 # Prep Player Object
+                height = 0
+                weight = 0
+                age = 0.0
                 name = sanitize(row[0])
                 height = row[3]
-                weight = row[4]
+                weight = sanitize(row[4])
+                if not weight:
+                    weight = None
                 age = row[5]
                 position = sanitize(row[2])
                 team_name = sanitize(row[1])
