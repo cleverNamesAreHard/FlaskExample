@@ -18,12 +18,12 @@ def allowed_file(filename):
     return "." in filename and \
         filename.split(".")[:-1].lower() in ALLOWED_EXTENSIONS
 
-@app.route("/")
+@application.route("/")
 def index():
     return render_template("index.html", title="Interview Questions",
         header="Queries")
 
-@app.route("/load_csv", methods=["GET", "POST"])
+@application.route("/load_csv", methods=["GET", "POST"])
 def load_csv():
     bucket = "nmedovich-interview"
     file_name = ""
