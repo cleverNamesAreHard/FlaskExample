@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+<title>{{title}}</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<div class="topnav">
+	<table>
+    <thead>
+      <tr>
+      	<th>ID</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Position</th>
+        <th>Height</th>
+        <th>Weight</th>
+      </tr>
+    </thead>
+    	<tbody>
+			<tr>
+				<td>{{data.team_id}}</td>
+				<td>{{data.name}}</td>
+				<td>{{data.age}}</td>
+				<td>{{data.position}}</td>
+				<td>{{data.height}}</td>
+				<td>{{data.weight}}</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="form_container">
+    <form action="/new_game">
+      <input type="hidden" name="player_id" value="{{data.team_id}}">
+      <input type="text" placeholder="Game Date" name="game_date">
+      <input type="text" placeholder="runs" name="runs">
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+</body>
+</html>
