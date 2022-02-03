@@ -155,3 +155,21 @@ def search_players():
         print("\n")
     return render_template("show_player.html", title="Show Player",
         data=player)
+
+application.route("/new_game", methods=["GET", "POST"])
+def new_game():
+    if "player_id" in request.args:
+        if request.args["player_id"]:
+            player_id = request.args["player_id"]
+            game_date = request.args["game_date"]
+            runs = request.args["runs"]
+            game = Game(game_date, player_id, runs)
+            game
+        else:
+            res = make_response('Player_ID not set', 200)
+            res.mimetype = "text/plain"
+            return res
+    else:
+        res = make_response('Player_ID not sent', 200)
+        res.mimetype = "text/plain"
+        return res

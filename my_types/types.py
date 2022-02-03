@@ -42,7 +42,7 @@ class Player():
         height = row[2]
         age = row[3]
         position = row[4]
-        player = Player(name, height, weight, age, position, "")
+        player = Player(name, height, weight, age, position, player_id)
         return player
 
 
@@ -75,3 +75,11 @@ class Game():
         self.game_date = game_date
         self.player_id = player_id
         self.runs = runs
+
+    def load_game(self, db_conn):
+        cursor = db_conn.cursor()
+        cols = "(game_date, player_id, runs)"
+        sql = f"INSERT INTO games {cols} VALUES (%s,%s,%s)"
+        cursor.execute(sql, (self.game_date, self.player_id, self.runs))
+        db_conn.commit()
+        print(cursor.rowcount, "records inserted.\n")
