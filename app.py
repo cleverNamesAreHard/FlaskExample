@@ -47,8 +47,8 @@ def load_csv():
         # Valid filetype filename exists
         if file:
             print("Received File")
-            file.save(os.path.join(application.config["UPLOAD_FOLDER"], file.name))
-            file_name = os.path.join(application.config["UPLOAD_FOLDER"], file.name)
+            file.save(os.path.join(application.config["UPLOAD_FOLDER"], file.filename))
+            file_name = os.path.join(application.config["UPLOAD_FOLDER"], file.filename)
             s3_upload = False
         else:
             print("Did not receive")
