@@ -40,13 +40,13 @@ def load_csv():
             return res
         file = request.files["file"]
         # No filename, so no file sent
-        if not file.name:
+        if not file.name or not file:
             res = make_response('No file selected', 200)
             res.mimetype = "text/plain"
             return res
+        s3_upload = False
         # Valid filetype filename exists
         if file and allowed_file(file.name):
-            s3_upload = False
             file.save(os.path.join(application.config["UPLOAD_FOLDER"], file.name))
             file_name = os.path.join(application.config["UPLOAD_FOLDER"], file.name)
         # Overrise, and use S3 bucket
