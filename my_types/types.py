@@ -34,7 +34,7 @@ class Team():
         db_conn.commit()
         print(cursor.rowcount, "records inserted.")
 
-    def get_teams():
+    def get_teams(db_conn):
         cursor = db_conn.cursor()
         sql = "SELECT DISTINCT id, name FROM teams"
         teams = {}
