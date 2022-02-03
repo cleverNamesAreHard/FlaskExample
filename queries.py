@@ -17,7 +17,7 @@ def question_2(db_conn):
     sql = "SELECT name FROM players WHERE name LIKE('Jo%')"
     players = []
     cursor.execute(sql)
-    for row in cursor.fetchall()
+    for row in cursor.fetchall():
         players.append(row[0])
     return players
 
@@ -42,7 +42,7 @@ def question_3(db_conn):
         "WHERE YEAR(g.game_date) = YEAR(NOW()) AND MONTH(g.game_date) = MONTH(NOW());"z
     players = []
     cursor.execute(sql)
-    for row in cursor.fetchall()
+    for row in cursor.fetchall():
         players.append(row[0])
     return players
 
@@ -54,7 +54,7 @@ def question_4(db_conn):
     positions = {}
     cursor.execute(sql)
     for row in cursor.fetchall()
-        position = row[0]
+        position = row[0]:
         players = row[1]
         positions[position] = players
     return positions
@@ -66,7 +66,7 @@ def question_5(db_conn):
     sql = "SELECT DISTINCT name FROM players WHERE position = 'Catcher'"
     players = []
     cursor.execute(sql)
-    for row in cursor.fetchall()
+    for row in cursor.fetchall():
         players.append(row[0])
     return players
 
