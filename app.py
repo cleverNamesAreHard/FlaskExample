@@ -33,7 +33,6 @@ def load_csv():
     if request.method == "GET":
         file_name = "mlb_players.csv"
     else:
-        print(request.files)
         # Empty file sent
         if "file" not in request.files:
             res = make_response('No "file" body detected', 200)
@@ -41,15 +40,15 @@ def load_csv():
             return res
         file = request.files["file"]
         # No filename, so no file sent
-        if not file.file_name:
+        if not file.name:
             res = make_response('No file selected', 200)
             res.mimetype = "text/plain"
             return res
         # Valid filetype filename exists
-        if file and allowed_file(file.filename):
+        if file and allowed_file(file.name):
             s3_upload = False
-            file.save(os.path.join(application.config["UPLOAD_FOLDER"], filename))
-            file_name = os.path.join(application.config["UPLOAD_FOLDER"], filename)
+            file.save(os.path.join(application.config["UPLOAD_FOLDER"], file.name))
+            file_name = os.path.join(application.config["UPLOAD_FOLDER"], file.name)
         # Overrise, and use S3 bucket
         if "file_name" in request.args:
             file_name = request.args["file_name"]
