@@ -127,6 +127,9 @@ def load_csv():
 @application.route("/list_players")
 def list_players():
     players = Players.get_players(db_conn)
+    print("ID  |  Name")
+    for player in players:
+        print(f"{player}  |  {players[player]}")
     return render_template("search_players.html", title="Search Players",
         data=players)
 
