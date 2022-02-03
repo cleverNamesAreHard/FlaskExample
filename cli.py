@@ -5,8 +5,8 @@ def load_csv():
     print("Please enter the name of a file to upload to the database")
     f_in = input("> ")
     files = {"file": open(f_in, "rb")}
-    url = "http://0.0.0.0/load_csv"
-    requests.post(url,files=files)
+    url = "http://localhost:5000/load_csv"
+    requests.post(url, files=files)
 
 def list_players():
     pass
