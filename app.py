@@ -123,9 +123,9 @@ def load_csv():
     res.mimetype = "text/plain"
     return res
 
-'''
+
 @application.route("/list_players")
-def load_csv():
+def list_players():
     players = Players.get_players(db_conn)
     return render_template("search_players.html", title="Search Players",
         data=players)
@@ -146,5 +146,3 @@ def search_players():
         res = make_response(player_id, 200)
         res.mimetype = "text/plain"
         return res
-'''
-
