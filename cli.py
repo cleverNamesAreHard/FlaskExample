@@ -13,7 +13,12 @@ def load_csv():
         print("There was an error while adding the records")
 
 def list_players():
-    pass
+    url = "http://localhost:5000/list_players"
+    req = requests.get(url)
+    if req.status_code = 200:
+        print("Successfully got list of players!")
+    else:
+        print("There was an error while getting the player list")
 
 def select_player():
     pass
