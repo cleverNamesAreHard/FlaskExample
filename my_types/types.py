@@ -36,7 +36,7 @@ class Player():
         cols = "name, weight, height, age, position"
         sql = f"SELECT DISTINCT {cols} FROM players WHERE player_id={player_id}"
         cursor.execute(sql)
-        row = cursor.fetchone():
+        row = cursor.fetchone()
         name = row[0]
         weight = row[1]
         height = row[2]
