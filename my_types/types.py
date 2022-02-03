@@ -16,7 +16,6 @@ class Player():
         cols = "(name, height, weight, age, position, team_id)"
         sql = f"INSERT INTO players {cols} VALUES (%s,%s,%s,%s,%s,%s)"
         for player in players:
-            print(player.name, player.height, player.weight, player.age, player.position, player.team_id)
             cursor.execute(sql, (player.name, player.height, player.weight, player.age, player.position, player.team_id))
         db_conn.commit()
         print(cursor.rowcount, "records inserted.")
