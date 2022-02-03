@@ -129,6 +129,7 @@ def load_csv():
     return render_template("search_players.html", title="Search Players",
         data=players)
 
+'''
 @application.route("/search_players", methods=["POST"])
 def search_players():
     if not "player_id" in request.args:
@@ -144,5 +145,5 @@ def search_players():
         res = make_response(player_id, 200)
         res.mimetype = "text/plain"
         return res
-
+'''
 
