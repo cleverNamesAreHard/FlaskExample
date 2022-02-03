@@ -19,7 +19,7 @@ class Player():
             cursor.execute(sql, (player.name, player.height, player.weight,
                 player.age, player.position, player.team_id))
         db_conn.commit()
-        print(mycursor.rowcount, "records inserted.")
+        print(cursor.rowcount, "records inserted.")
 
 
 class Team():
@@ -32,7 +32,7 @@ class Team():
         for team in teams:
             cursor.execute(sql, (team.name,))
         db_conn.commit()
-        print(mycursor.rowcount, "records inserted.")
+        print(cursor.rowcount, "records inserted.")
 
     def get_teams():
         cursor = db_conn.cursor()
