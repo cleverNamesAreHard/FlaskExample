@@ -42,7 +42,7 @@ def index():
 def load_csv():
     bucket = "nmedovich-interview"
     file_name = ""
-    s3_upload = True
+    s3_upload = False
     # Load flat file from S3
     if request.method == "GET":
         file_name = "mlb_players.csv"
@@ -63,7 +63,6 @@ def load_csv():
             print("Received File\n")
             file.save(os.path.join(application.config["UPLOAD_FOLDER"], file.filename))
             file_name = os.path.join(application.config["UPLOAD_FOLDER"], file.filename)
-            s3_upload = False
         else:
             print("Did not receive\n")
         # Override, and use S3 bucket
