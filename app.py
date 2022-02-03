@@ -49,7 +49,7 @@ def load_csv():
             file.save(os.path.join(application.config["UPLOAD_FOLDER"], file.name))
             file_name = os.path.join(application.config["UPLOAD_FOLDER"], file.name)
             s3_upload = False
-        else
+        else:
             res = make_response('Invalid filename or type', 200)
             res.mimetype = "text/plain"
             return res
