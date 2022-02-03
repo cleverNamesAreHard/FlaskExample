@@ -33,28 +33,25 @@ def load_csv():
     if request.method == "GET":
         file_name = "mlb_players.csv"
     else:
-        # Allow user to upload file, will not check for sanitation
-        if "upload" in request.args:
-            # Empty file sent
-            if "file" not in request.files:
-                res = make_response('No "file" body detected', 200)
-                res.mimetype = "text/plain"
-                return res
-            file = request.files["file"]
-            # No filename, so no file sent
-            if not file.file_name:
-                res = make_response('No file selected', 200)
-                res.mimetype = "text/plain"
-                return res
-            # Valid filetype filename exists
-            if file and allowed_file(file.filename):
-                s3_upload = False
-                file.save(os.path.join(application.config["UPLOAD_FOLDER"], filename))
-                file_name = os.path.join(application.config["UPLOAD_FOLDER"], filename)
-        else:
-            # Allow user to specify a file in the interview bucket
-            if "file_name" in request.args:
-                file_name = request.args["file_name"]
+        # Empty file sent
+        if "file" not in request.files:
+            res = make_response('No "file" body detected', 200)
+            res.mimetype = "text/plain"
+            return res
+        file = request.files["file"]
+        # No filename, so no file sent
+        if not file.file_name:
+            res = make_response('No file selected', 200)
+            res.mimetype = "text/plain"
+            return res
+        # Valid filetype filename exists
+        if file and allowed_file(file.filename):
+            s3_upload = False
+            file.save(os.path.join(application.config["UPLOAD_FOLDER"], filename))
+            file_name = os.path.join(application.config["UPLOAD_FOLDER"], filename)
+        # Overrise, and use S3 bucket
+        if "file_name" in request.args:
+            file_name = request.args["file_name"]
     lines = None
     # Use S3 File
     if s3_upload:
