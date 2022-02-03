@@ -34,7 +34,7 @@ class Player():
     def get_player(db_conn, player_id):
         cursor = db_conn.cursor()
         cols = "name, weight, height, age, position"
-        sql = f"SELECT DISTINCT {cols} FROM players WHERE player_id={player_id}"
+        sql = f"SELECT DISTINCT {cols} FROM players WHERE id={player_id}"
         cursor.execute(sql)
         row = cursor.fetchone()
         name = row[0]
