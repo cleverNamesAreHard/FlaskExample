@@ -136,6 +136,7 @@ def list_players():
 
 @application.route("/search_players", methods=["GET", "POST"])
 def search_players():
+    player = None
     if not "player_id" in request.args:
         res = make_response('Player_ID not sent', 200)
         res.mimetype = "text/plain"
@@ -152,6 +153,5 @@ def search_players():
             player.age, player.position
         )
         print("\n")
-        res = make_response(player_id, 200)
-        res.mimetype = "text/plain"
-        return res
+    return render_template("show_player.html", title="Show Player",
+        data=player)

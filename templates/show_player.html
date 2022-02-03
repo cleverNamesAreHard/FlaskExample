@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+<title>{{title}}</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<div class="topnav">
+  <div class="search-container">
+    <form action="/search_players">
+      <input type="text" placeholder="Search.." name="player_id">
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+	<table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Position</th>
+        <th>Height</th>
+        <th>Weight</th>
+      </tr>
+    </thead>
+    	<tbody>
+			<tr>
+				<td>{{player.name}}</td>
+				<td>{{player.age}}</td>
+				<td>{{player.position}}</td>
+				<td>{{player.height}}</td>
+				<td>{{player.weight}}</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
