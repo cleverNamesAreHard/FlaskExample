@@ -62,7 +62,7 @@ def load_csv():
         lines = s3_obj.read().decode('utf-8').splitlines(True)
     # Use Flat file or Uploaded file
     else:
-        lines = open(file_name, "r"):
+        lines = open(file_name, "r")
     # Ignoring Headers
     first_line = True
     teams = []
