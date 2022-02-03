@@ -1,4 +1,4 @@
 secret.txt
 token.txt
 application.sock
-pycahe*
+__pycache__/
