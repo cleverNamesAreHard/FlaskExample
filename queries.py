@@ -54,7 +54,7 @@ def question_4(db_conn):
     positions = {}
     cursor.execute(sql)
     for row in cursor.fetchall():
-        position = row[0]:
+        position = row[0]
         players = row[1]
         positions[position] = players
     return positions
