@@ -53,7 +53,7 @@ def question_4(db_conn):
     sql = "SELECT DISTINCT position, COUNT(id) FROM players GROUP BY position"
     positions = {}
     cursor.execute(sql)
-    for row in cursor.fetchall()
+    for row in cursor.fetchall():
         position = row[0]:
         players = row[1]
         positions[position] = players
