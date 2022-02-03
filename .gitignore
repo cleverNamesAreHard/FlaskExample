@@ -1,6 +1,7 @@
 secret.txt
 token.txt
 application.sock
+temp/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
