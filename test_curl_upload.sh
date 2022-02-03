@@ -1,0 +1,1 @@
+curl -F "upload=y&file=@./test_upload.csv" localhost:5000/load_csv
