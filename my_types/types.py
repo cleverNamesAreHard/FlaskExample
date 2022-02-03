@@ -30,7 +30,7 @@ class Team():
         cursor = db_conn.cursor()
         sql = "INSERT IGNORE INTO teams (name) VALUES (%s)"
         for team in teams:
-            cursor.execute(sql, team)
+            cursor.execute(sql, team.name)
         db_conn.commit()
         print(mycursor.rowcount, "records inserted.")
 
