@@ -27,7 +27,7 @@ functions = {
 num_in = 0
 try:
     num_in = int(input("> "))
-    if num_in not >= 1 and num_in not <= 3:
+    if not num_in >= 1 and not num_in <= 3:
         raise ValueError("Please enter a valid number between 1 and 3")
 except ValueError:
     print("Please enter a valid number between 1 and 3")
