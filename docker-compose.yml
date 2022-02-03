@@ -1,10 +1,13 @@
-version: '1'
+version: '3.8'
+
 services:
-  python3:
-    restart: always
-    build: .
-    container_name: 'nmedovich Interview Container'
-    working_dir: '/home/root'
-    tty: true
+  web:
+    build: ./
+    command: python manage.py run -h 0.0.0.0
     volumes:
-      - ./app:/home/root/ap
+      - ./:/usr/src/app/
+    ports:
+      - 5000:5000
+    env_file:
+      - ./.env.dev
+
