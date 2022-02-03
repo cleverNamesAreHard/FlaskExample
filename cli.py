@@ -1,4 +1,5 @@
 import requests
+import json
 
 
 def load_csv():
@@ -13,9 +14,13 @@ def load_csv():
         print("There was an error while adding the records")
 
 def list_players():
-    url = "http://localhost:5000/list_players"
+    url = "http://localhost:5000/list_players?ret=cli"
     req = requests.get(url)
     if req.status_code == 200:
+        players = json.loads(req.text)
+        print("ID  |  Name")
+        for player in players:
+            print(f"{player}  |  {players[player]}\n")
         print("Successfully got list of players!")
     else:
         print("There was an error while getting the player list")

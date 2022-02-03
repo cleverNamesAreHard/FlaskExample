@@ -1,5 +1,5 @@
 from flask import Flask, render_template, url_for, redirect, make_response
-from flask import request
+from flask import request, jsonify
 from my_types.types import Team, Player, Game
 import boto3
 import csv
@@ -129,6 +129,11 @@ def list_players():
     print("ID  |  Name")
     for player in players:
         print(f"{player}  |  {players[player]}\n")
+    if "ret" in request.args:
+        if request.args["ret"] == "cli":
+            res = make_response(jsonify(players))
+            res.mimetype = "text/json"
+            return res
     return render_template("search_players.html", title="Search Players",
         data=players)
 
