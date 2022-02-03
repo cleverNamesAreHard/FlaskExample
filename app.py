@@ -156,7 +156,7 @@ def search_players():
     return render_template("show_player.html", title="Show Player",
         data=player)
 
-application.route("/new_game", methods=["GET", "POST"])
+@application.route("/new_game", methods=["GET", "POST"])
 def new_game():
     if "player_id" in request.args:
         if request.args["player_id"]:
