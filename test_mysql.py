@@ -3,9 +3,11 @@ import mysql.connector
 
 def test():
     host = "0.0.0.0"
-    user = "root"
+    user = "pythonUser"
     database = "mlb_players"
-    password = "X57e85e78*"
+    password = ""
+    with open("secret.txt", "r") as f_in:
+        password = f_in.read().split("\n")[0]
 
     db_conn = mysql.connector.connect(
         host = host,
