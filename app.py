@@ -45,14 +45,13 @@ def load_csv():
             res.mimetype = "text/plain"
             return res
         # Valid filetype filename exists
-        if file and allowed_file(file.name):
+        if file:
+            print("Received File")
             file.save(os.path.join(application.config["UPLOAD_FOLDER"], file.name))
             file_name = os.path.join(application.config["UPLOAD_FOLDER"], file.name)
             s3_upload = False
         else:
-            res = make_response('Invalid filename or type', 200)
-            res.mimetype = "text/plain"
-            return res
+            print("Did not receive")
         # Override, and use S3 bucket
         if "file_name" in request.args:
             file_name = request.args["file_name"]
