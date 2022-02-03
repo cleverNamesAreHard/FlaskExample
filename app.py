@@ -3,6 +3,7 @@ from flask import request
 from my_types.types import Team, Player, Game
 import boto3
 import csv
+import mysql.connector
 import os
 
 
