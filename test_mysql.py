@@ -3,7 +3,7 @@ import mysql.connector
 
 def test():
     host = "0.0.0.0"
-    user = "pythonUser"
+    user = "root"
     database = "mlb_players"
     password = ""
     with open("secret.txt", "r") as f_in:
