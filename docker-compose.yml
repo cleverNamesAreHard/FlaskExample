@@ -1,0 +1,10 @@
+version: '1'
+services:
+  python3:
+    restart: always
+    build: .
+    container_name: 'nmedovich Interview Container'
+    working_dir: '/home/root'
+    tty: true
+    volumes:
+      - ./app:/home/root/ap
