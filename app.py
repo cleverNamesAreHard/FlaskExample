@@ -123,13 +123,14 @@ def load_csv():
     res.mimetype = "text/plain"
     return res
 
+'''
 @application.route("/list_players")
 def load_csv():
     players = Players.get_players(db_conn)
     return render_template("search_players.html", title="Search Players",
         data=players)
 
-'''
+
 @application.route("/search_players", methods=["POST"])
 def search_players():
     if not "player_id" in request.args:
