@@ -1,6 +1,5 @@
 import requests
 import json
-from my_types import Player
 
 
 def load_csv():
