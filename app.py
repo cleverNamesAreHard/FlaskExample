@@ -79,7 +79,7 @@ def load_csv():
                 height = row[3]
                 weight = row[4]
                 age = row[5]
-                position = santitize(row[2])
+                position = sanitize(row[2])
                 team_name = sanitize(row[1])
                 player = Player(
                     name, height, weight, age, position, team_name
