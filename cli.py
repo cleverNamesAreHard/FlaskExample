@@ -6,7 +6,8 @@ def load_csv():
     f_in = input("> ")
     files = {"file": open(f_in, "rb")}
     url = "http://localhost:5000/load_csv"
-    requests.post(url, files=files)
+    req = requests.post(url, files=files)
+    print(req.status_code)
 
 def list_players():
     pass
