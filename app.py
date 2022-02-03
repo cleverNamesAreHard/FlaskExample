@@ -91,8 +91,8 @@ def load_csv():
         else:
             first_line = False
     # Set up database connector to pass to helper functions
-    host = "localhost"
-    user = "pythonUser"
+    host = "0.0.0.0"
+    user = "root"
     database = "mlb_players"
     password = ""
     with open("secret.txt", "r") as f_in:
