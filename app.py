@@ -146,7 +146,7 @@ def search_players():
         return res
     else:
         player_id = request.args["player_id"]
-        player = Player.get_player()
+        player = Player.get_player(db_conn, player_id)
         print("Name, Height, Weight, Age, Position")
         print(player.name, player.height, player.weight,
             player.age, player.position
