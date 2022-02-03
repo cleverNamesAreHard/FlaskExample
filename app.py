@@ -49,7 +49,7 @@ def load_csv():
             if file and allowed_file(file.filename):
                 s3_upload = False
                 file_name = file.filename
-                file.save(os.path.join(app.config["UPLOAD_FOLDER"], filename))
+                file.save(os.path.join(application.config["UPLOAD_FOLDER"], filename))
         else:
             # Allow user to specify a file in the interview bucket
             if "file_name" in request.args:
