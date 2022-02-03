@@ -12,6 +12,20 @@ ALLOWED_EXTENSIONS = ["csv"]
 UPLOAD_FOLDER = "./temp"
 application.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
+# Set up database connector to pass to helper functions
+host = "0.0.0.0"
+user = "root"
+database = "mlb_players"
+password = ""
+with open("secret.txt", "r") as f_in:
+    password = f_in.read().split("\n")[0]
+db_conn = mysql.connector.connect(
+    host = host,
+    user = user,
+    password = password,
+    database = database
+)
+
 def sanitize(string_in):
     return string_in.replace("\"", "").strip()
 
@@ -96,19 +110,6 @@ def load_csv():
                 break
         else:
             first_line = False
-    # Set up database connector to pass to helper functions
-    host = "0.0.0.0"
-    user = "root"
-    database = "mlb_players"
-    password = ""
-    with open("secret.txt", "r") as f_in:
-        password = f_in.read().split("\n")[0]
-    db_conn = mysql.connector.connect(
-        host = host,
-        user = user,
-        password = password,
-        database = database
-    )
     # Add teams to table if they don't exist, ignore if they do
     Team.load_teams(teams, db_conn)
     # Retrieve teams and team IDs for Player objects
@@ -121,4 +122,27 @@ def load_csv():
     res = make_response("Successfully loaded", 200)
     res.mimetype = "text/plain"
     return res
+
+@application.route("/list_players")
+def load_csv():
+    players = Players.get_players(db_conn)
+    return render_template("search_players.html", title="Search Players",
+        data=players)
+
+@application.route("/search_players", methods=["POST"])
+def search_players():
+    if not "player_id" in request.args:
+        res = make_response('Player_ID not sent', 200)
+        res.mimetype = "text/plain"
+        return res
+    elif not request.args["player_id"]:
+        res = make_response('Player_ID not set', 200)
+        res.mimetype = "text/plain"
+        return res
+    else:
+        player_id = request_args["player_id"]
+        res = make_response(player_id, 200)
+        res.mimetype = "text/plain"
+        return res
+
 

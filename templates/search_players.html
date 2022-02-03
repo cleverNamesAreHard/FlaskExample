@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+<title>{{title}}</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<div class="topnav">
+  <div class="search-container">
+    <form action="/search_players">
+      <input type="text" placeholder="Search.." name="player_id">
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+	<table>
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>name</th>
+      </tr>
+    </thead>
+    	<tbody>
+			{% for key, value in data.items() %}
+	  			<tr>
+	    			<td>{{ key }}</td>
+	    			<td>{{ value }}</td>
+	  			</tr>
+	  		{% endfor %}
+		</tbody>
+	</table>
+</body>
+</html>
