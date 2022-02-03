@@ -128,7 +128,7 @@ def list_players():
     players = Player.get_players(db_conn)
     print("ID  |  Name")
     for player in players:
-        print(f"{player}  |  {players[player]}\n")
+        print(f"{player}  |  {players[player]}")
     if "ret" in request.args:
         if request.args["ret"] == "cli":
             res = make_response(jsonify(players))
@@ -157,6 +157,20 @@ def search_players():
             player.age, player.position
         )
         print("\n")
+    if "ret" in request.args:
+        if request.args["ret"] == "cli":
+            res_text = "{},{},{},{},{},{}".format(
+                player.name,
+                player.height,
+                player.weight,
+                player.age,
+                player.position,
+                player.team_id
+            )
+            res = make_response(res_text)
+            res.mimetype = "text/plain"
+            return res
+
     return render_template("show_player.html", title="Show Player",
         data=player)
 
@@ -170,6 +184,11 @@ def new_game():
             game = Game(game_date, player_id, runs)
             game.load_game(db_conn)
             res = make_response('Successfully added game to player', 200)
+            if "ret" in request.args:
+                if request.args["ret"] == "cli":
+                    res = make_response(res)
+                    res.mimetype = "text/plain"
+                    return res
             print('Successfully added game to player\n')
             res.mimetype = "text/plain"
             return res
