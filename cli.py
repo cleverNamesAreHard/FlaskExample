@@ -18,8 +18,8 @@ print("[2] LIST all players from the players table")
 print("[3] SELECT a player, and add game results")
 
 functions = {
-    1: load_csv
-    2: list_players
+    1: load_csv,
+    2: list_players,
     3: select_player
 }
 
