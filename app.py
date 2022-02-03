@@ -166,6 +166,7 @@ def new_game():
             game = Game(game_date, player_id, runs)
             game.load_game(db_conn)
             res = make_response('Successfully added game to player', 200)
+            print('Successfully added game to player\n')
             res.mimetype = "text/plain"
             return res
         else:
