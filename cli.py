@@ -7,7 +7,10 @@ def load_csv():
     files = {"file": open(f_in, "rb")}
     url = "http://localhost:5000/load_csv"
     req = requests.post(url, files=files)
-    print(req.status_code)
+    if req.status_code == 200:
+        print("Successfully added the records!")
+    else:
+        print("There was an error while adding the records")
 
 def list_players():
     pass
