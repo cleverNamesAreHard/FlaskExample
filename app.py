@@ -96,7 +96,7 @@ def load_csv():
     database = "mlb_players"
     password = ""
     with open("secret.txt", "r") as f_in:
-        password = f_in.read()
+        password = f_in.read().split("\n")[0]
     db_conn = mysql.connector.connect(
         host = host,
         user = user,
