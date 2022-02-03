@@ -26,7 +26,7 @@ class Player():
         players = {}
         cursor.execute(sql)
         for row in cursor:
-            id_  row[0]
+            id_ = row[0]
             name = row[1]
             players[id_] = name
         return players
