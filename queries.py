@@ -1,20 +1,6 @@
 import mysql.connector
 
 
-host = "0.0.0.0"
-user = "root"
-database = "mlb_players"
-password = ""
-with open("secret.txt", "r") as f_in:
-    password = f_in.read().split("\n")[0]
-db_conn = mysql.connector.connect(
-    host = host,
-    user = user,
-    password = password,
-    database = database
-)
-
-
 # How many players are there?
 # SELECT COUNT(id) FROM players
 def question_1(db_conn):
@@ -49,6 +35,7 @@ WHERE
     YEAR(g.game_date) = YEAR(NOW()) AND
     MONTH(g.game_date) = MONTH(NOW());
 '''
+
 def question_3(db_conn):
     cursor = db_conn.cursor()
     sql = "SELECT p.name FROM players AS p LEFT JOIN games AS g ON g.player_id = p.id" +
@@ -82,6 +69,20 @@ def question_5(db_conn):
     for row in cursor.fetchall()
         players.append(row[0])
     return players
+
+
+host = "0.0.0.0"
+user = "root"
+database = "mlb_players"
+password = ""
+with open("secret.txt", "r") as f_in:
+    password = f_in.read().split("\n")[0]
+db_conn = mysql.connector.connect(
+    host = host,
+    user = user,
+    password = password,
+    database = database
+)
 
 print("How many players are there?")
 print(question_1(db_conn))
