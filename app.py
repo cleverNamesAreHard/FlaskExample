@@ -164,7 +164,10 @@ def new_game():
             game_date = request.args["game_date"]
             runs = request.args["runs"]
             game = Game(game_date, player_id, runs)
-            game
+            game.load_game(db_conn)
+            res = make_response('Successfully added game to player', 200)
+            res.mimetype = "text/plain"
+            return res
         else:
             res = make_response('Player_ID not set', 200)
             res.mimetype = "text/plain"
