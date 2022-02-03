@@ -145,7 +145,7 @@ def search_players():
         res.mimetype = "text/plain"
         return res
     else:
-        player_id = request_args["player_id"]
+        player_id = request.args["player_id"]
         res = make_response(player_id, 200)
         res.mimetype = "text/plain"
         return res
