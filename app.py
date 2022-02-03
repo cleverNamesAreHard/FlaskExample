@@ -134,7 +134,7 @@ def list_players():
         data=players)
 
 
-@application.route("/search_players", methods=["POST"])
+@application.route("/search_players", methods=["GET", "POST"])
 def search_players():
     if not "player_id" in request.args:
         res = make_response('Player_ID not sent', 200)
