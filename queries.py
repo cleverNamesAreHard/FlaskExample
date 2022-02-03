@@ -38,8 +38,8 @@ WHERE
 
 def question_3(db_conn):
     cursor = db_conn.cursor()
-    sql = "SELECT p.name FROM players AS p LEFT JOIN games AS g ON g.player_id = p.id" +
-        "WHERE YEAR(g.game_date) = YEAR(NOW()) AND MONTH(g.game_date) = MONTH(NOW());"z
+    sql = ("SELECT p.name FROM players AS p LEFT JOIN games AS g ON g.player_id = p.id" +
+        "WHERE YEAR(g.game_date) = YEAR(NOW()) AND MONTH(g.game_date) = MONTH(NOW());")
     players = []
     cursor.execute(sql)
     for row in cursor.fetchall():
