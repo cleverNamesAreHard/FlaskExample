@@ -33,6 +33,7 @@ def load_csv():
     if request.method == "GET":
         file_name = "mlb_players.csv"
     else:
+        print(request.files)
         # Empty file sent
         if "file" not in request.files:
             res = make_response('No "file" body detected', 200)
