@@ -7,8 +7,8 @@
 <body>
 <div class="topnav">
   <div class="search-container">
-    <form action="/search_players">
-      <input type="text" placeholder="Search.." name="player_id">
+    <form action="/search_datas">
+      <input type="text" placeholder="Search.." name="data_id">
       <button type="submit">Submit</button>
     </form>
   </div>
@@ -25,11 +25,11 @@
     </thead>
     	<tbody>
 			<tr>
-				<td>{{player.name}}</td>
-				<td>{{player.age}}</td>
-				<td>{{player.position}}</td>
-				<td>{{player.height}}</td>
-				<td>{{player.weight}}</td>
+				<td>{{data.name}}</td>
+				<td>{{data.age}}</td>
+				<td>{{data.position}}</td>
+				<td>{{data.height}}</td>
+				<td>{{data.weight}}</td>
 			</tr>
 		</tbody>
 	</table>
