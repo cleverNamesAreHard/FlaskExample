@@ -20,6 +20,18 @@ class Player():
         db_conn.commit()
         print(cursor.rowcount, "records inserted.")
 
+    def get_players(db_conn):
+        cursor = db_conn.cursor()
+        sql = "SELECT DISTINCT id, name FROM players"
+        players = {}
+        cursor.execute(sql)
+        for row in cursor:
+            id_  row[0]
+            name = row[1]
+            players[id_] = name
+        return players
+
+
 
 class Team():
     def __init__(self, name):
