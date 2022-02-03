@@ -6,10 +6,10 @@ import csv
 import os
 
 
-app = Flask(__name__)
+application = Flask(__name__)
 ALLOWED_EXTENSIONS = ["csv"]
 UPLOAD_FOLDER = "./temp"
-app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
+application.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
 def sanitize(string_in):
     return string_in.replace("\"", "").strip()
