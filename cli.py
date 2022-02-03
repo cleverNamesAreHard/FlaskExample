@@ -2,7 +2,7 @@ import requests
 
 
 def load_csv():
-    f_in input("Please enter the name of a file to upload to the database")
+    f_in = input("Please enter the name of a file to upload to the database")
     files = {"file": open(f_in, "rb")}
     url = "localhost:5000/load_csv"
     requests.post(url,files=files)
