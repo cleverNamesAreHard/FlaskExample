@@ -60,12 +60,12 @@ def load_csv():
             return res
         # Valid filetype filename exists
         if file:
-            print("Received File")
+            print("Received File\n")
             file.save(os.path.join(application.config["UPLOAD_FOLDER"], file.filename))
             file_name = os.path.join(application.config["UPLOAD_FOLDER"], file.filename)
             s3_upload = False
         else:
-            print("Did not receive")
+            print("Did not receive\n")
         # Override, and use S3 bucket
         if "file_name" in request.args:
             file_name = request.args["file_name"]
@@ -129,7 +129,7 @@ def list_players():
     players = Player.get_players(db_conn)
     print("ID  |  Name")
     for player in players:
-        print(f"{player}  |  {players[player]}")
+        print(f"{player}  |  {players[player]}\n")
     return render_template("search_players.html", title="Search Players",
         data=players)
 
@@ -146,6 +146,12 @@ def search_players():
         return res
     else:
         player_id = request.args["player_id"]
+        player = Player.get_player()
+        print("Name, Height, Weight, Age, Position")
+        print(player.name, player.height, player.weight,
+            player.age, player.position
+        )
+        print("\n")
         res = make_response(player_id, 200)
         res.mimetype = "text/plain"
         return res
